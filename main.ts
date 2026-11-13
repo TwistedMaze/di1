@@ -155,6 +155,7 @@ function movePlayerLeft () {
 function createPlayer () {
     mySprite = sprites.create(assets.image`walkfront1`, SpriteKind.Player)
     info.setLife(3)
+    mySprite.setStayInScreen(true)
 }
 function movePlayerUp () {
     animation.runImageAnimation(
