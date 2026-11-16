@@ -271,7 +271,7 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
-    sprites.destroy(otherSprite)
+    sprites.destroy(sprite)
     activeEnemies += -1
 })
 controller.up.onEvent(ControllerButtonEvent.Released, function () {
