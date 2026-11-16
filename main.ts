@@ -363,6 +363,9 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     true
     )
 })
+sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) {
+    info.changeLifeBy(-1)
+})
 controller.up.onEvent(ControllerButtonEvent.Released, function () {
     animation.stopAnimation(animation.AnimationTypes.ImageAnimation, mySprite)
 })
@@ -444,7 +447,8 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     info.changeScoreBy(1)
-    sprites.destroy(mySprite2)
+    sprites.destroy(otherSprite)
+    activeEnemies += -1
 })
 let mySprite2: Sprite = null
 let gamePaused = 0
@@ -478,7 +482,7 @@ game.onUpdateInterval(200, function () {
             . . c b b b c d 5 5 b c . . . . 
             `, SpriteKind.Enemy)
         activeEnemies += 1
-        mySprite2.setPosition(randint(0, 10), randint(0, 10))
+        mySprite2.setPosition(randint(-120, 120), randint(-10, 10))
         mySprite2.follow(mySprite)
     }
 })
